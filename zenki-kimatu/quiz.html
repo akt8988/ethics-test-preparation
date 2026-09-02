@@ -336,7 +336,7 @@
 
       const keys = ['A', 'B'];
       const unitId = new URLSearchParams(location.search).get('unit');
-      const unit = typeof UNITS !== 'undefined' ? UNITS[unitId] : null;
+      var unit = typeof UNITS !== 'undefined' ? UNITS[unitId] : null;
       const titleEl = document.getElementById('unit-title');
       const leadEl = document.getElementById('unit-lead');
       const quizEl = document.getElementById('quiz');
@@ -348,6 +348,8 @@
         return;
       }
 
+      unit = shuffleChoices(unit);
+
       titleEl.textContent = unit.title;
       leadEl.textContent = '空欄に入る語句を選んでください';
       document.title = unit.title + '　|　倫理　考査対策';
@@ -357,6 +359,54 @@
         return q.blanks.map(function () { return null; });
       });
       var revealed = false;
+
+      function shuffleChoices(src) {
+        var cloned = {
+          title: src.title,
+          questions: src.questions.map(function (q) {
+            return {
+              stem: q.stem,
+              blanks: q.blanks.map(function (b) {
+                return { choices: b.choices.slice(), correct: b.correct };
+              })
+            };
+          })
+        };
+        var blanks = [];
+        cloned.questions.forEach(function (q) {
+          q.blanks.forEach(function (b) { blanks.push(b); });
+        });
+        var sides = randomSides(blanks.length);
+        blanks.forEach(function (b, i) {
+          if (b.correct !== sides[i]) {
+            b.choices.reverse();
+            b.correct = sides[i];
+          }
+        });
+        return cloned;
+      }
+
+      function randomSides(n) {
+        var fallback = null;
+        for (var attempt = 0; attempt < 80; attempt++) {
+          var sides = [];
+          var last = null;
+          var run = 0;
+          for (var i = 0; i < n; i++) {
+            var v = (run >= 3) ? 1 - last : (Math.random() < 0.5 ? 0 : 1);
+            if (v === last) run += 1;
+            else { last = v; run = 1; }
+            sides.push(v);
+          }
+          var switches = 0;
+          for (var j = 1; j < n; j++) {
+            if (sides[j] !== sides[j - 1]) switches += 1;
+          }
+          fallback = sides;
+          if (n < 4 || switches < n - 1) return sides;
+        }
+        return fallback;
+      }
 
       function escapeHtml(str) {
         return String(str)

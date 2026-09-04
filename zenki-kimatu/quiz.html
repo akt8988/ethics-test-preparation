@@ -6,354 +6,53 @@
   <title>倫理　考査対策</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root, [data-theme="light"] {
-      --color-bg: #f5f5f5;
-      --color-surface: #ffffff;
-      --color-border: rgba(0,0,0,0.08);
-      --color-divider: rgba(0,0,0,0.06);
-      --color-text: #1d1d1f;
-      --color-text-muted: #6e6e73;
-      --color-text-faint: #aeaeb2;
-      --color-primary: #0071e3;
-      --color-answer: #6495ed;
-      --color-correct: #248a3d;
-      --color-correct-bg: rgba(52, 199, 89, 0.16);
-      --color-incorrect: #d70015;
-      --color-incorrect-bg: rgba(255, 59, 48, 0.14);
-      --color-toggle-bg: rgba(0,0,0,0.04);
-      --color-toggle-hover: rgba(0,0,0,0.08);
-      --shadow-md: 0 4px 24px rgba(0,0,0,0.07);
-      --transition: 160ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    [data-theme="dark"] {
-      --color-bg: #000000;
-      --color-surface: #1c1c1e;
-      --color-border: rgba(255,255,255,0.1);
-      --color-divider: rgba(255,255,255,0.06);
-      --color-text: #f5f5f7;
-      --color-text-muted: #aeaeb2;
-      --color-text-faint: #636366;
-      --color-primary: #2997ff;
-      --color-answer: #6495ed;
-      --color-correct: #30d158;
-      --color-correct-bg: rgba(48, 209, 88, 0.18);
-      --color-incorrect: #ff453a;
-      --color-incorrect-bg: rgba(255, 69, 58, 0.18);
-      --color-toggle-bg: rgba(255,255,255,0.07);
-      --color-toggle-hover: rgba(255,255,255,0.13);
-      --shadow-md: 0 4px 24px rgba(0,0,0,0.4);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) {
-        --color-bg: #000000;
-        --color-surface: #1c1c1e;
-        --color-border: rgba(255,255,255,0.1);
-        --color-divider: rgba(255,255,255,0.06);
-        --color-text: #f5f5f7;
-        --color-text-muted: #aeaeb2;
-        --color-text-faint: #636366;
-        --color-primary: #2997ff;
-        --color-answer: #6495ed;
-        --color-correct: #30d158;
-        --color-correct-bg: rgba(48, 209, 88, 0.18);
-        --color-incorrect: #ff453a;
-        --color-incorrect-bg: rgba(255, 69, 58, 0.18);
-        --color-toggle-bg: rgba(255,255,255,0.07);
-        --color-toggle-hover: rgba(255,255,255,0.13);
-        --shadow-md: 0 4px 24px rgba(0,0,0,0.4);
-      }
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Helvetica Neue', sans-serif;
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      min-height: 100dvh;
-      line-height: 1.75;
-      font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
-      padding: clamp(16px, 4vw, 40px);
-      transition: background-color var(--transition), color var(--transition);
-    }
-
-    .container {
-      max-width: 740px;
-      margin: 0 auto;
-      background: var(--color-surface);
-      padding: clamp(24px, 5vw, 48px);
-      border-radius: 18px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--color-border);
-    }
-
-    .page-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .header-text { min-width: 0; }
-
-    .back {
-      display: inline-block;
-      color: var(--color-primary);
-      text-decoration: none;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .back:hover { text-decoration: underline; }
-    .back:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-
-    h1 {
-      font-size: clamp(1.2rem, 1rem + 0.8vw, 1.55rem);
-      font-weight: 600;
-      color: var(--color-text);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    .lead {
-      color: var(--color-text-muted);
-      font-size: 0.9375rem;
-      margin-bottom: 16px;
-    }
-
-    .control-panel {
-      position: sticky;
-      top: 12px;
-      z-index: 10;
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-      background: var(--color-surface);
-      padding: 10px 0;
-      border-bottom: 1px solid var(--color-divider);
-    }
-    .control-panel[hidden] { display: none; }
-
-    .btn {
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 8px 18px;
-      border-radius: 980px;
-      border: none;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      letter-spacing: -0.01em;
-    }
-    .btn:active { transform: scale(0.97); }
-    .btn:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    .btn-primary { background: #7fffd4; color: #1d1d1f; }
-    .btn-primary:hover { background: #5de8bc; }
-
-    .btn-secondary {
-      background: var(--color-toggle-bg);
-      color: var(--color-text-muted);
-    }
-    .btn-secondary:hover { background: var(--color-toggle-hover); color: var(--color-text); }
-
-    .theme-toggle {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--color-toggle-bg);
-      border: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--color-text-muted);
-      transition: background var(--transition), color var(--transition);
-    }
-    .theme-toggle:hover { background: var(--color-toggle-hover); color: var(--color-text); }
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    .question {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--color-divider);
-    }
-    .question:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .q-num {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--color-text-faint);
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-
-    .stem {
-      font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
-    }
-
-    .blank {
-      color: var(--color-text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .blank.filled {
-      color: var(--color-answer);
-      font-weight: 600;
-    }
-
-    .blank-block + .blank-block { margin-top: 10px; }
-
-    .blank-label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--color-text-faint);
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-
-    .choices {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .choice {
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      min-height: 44px;
-      padding: 8px 16px;
-      border-radius: 980px;
-      border: 1px solid var(--color-border);
-      background: var(--color-toggle-bg);
-      color: var(--color-text);
-      cursor: pointer;
-      letter-spacing: -0.01em;
-      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-    }
-    .choice:hover:not(:disabled) { background: var(--color-toggle-hover); }
-    .choice:active:not(:disabled) { transform: scale(0.97); }
-    .choice:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .choice .key {
-      color: var(--color-text-faint);
-      font-weight: 600;
-      margin-right: 0.4em;
-    }
-    .choice.correct,
-    .choice.correct:hover {
-      background: var(--color-correct-bg);
-      border-color: transparent;
-      color: var(--color-correct);
-    }
-    .choice.correct .key { color: var(--color-correct); }
-    .choice.incorrect,
-    .choice.incorrect:hover {
-      background: var(--color-incorrect-bg);
-      border-color: transparent;
-      color: var(--color-incorrect);
-    }
-    .choice.incorrect .key { color: var(--color-incorrect); }
-    .choice.idle { opacity: 0.45; }
-    .choice:disabled { cursor: default; }
-
-    .feedback {
-      margin-top: 8px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-    }
-    .feedback.ok { color: var(--color-correct); }
-    .feedback.ng { color: var(--color-incorrect); }
-
-    @media (max-width: 580px) {
-      .control-panel { flex-wrap: wrap; }
-      .btn { flex: 1; text-align: center; }
-      .choice { flex: 1; text-align: center; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <main class="container">
-    <header class="page-header">
-      <div class="header-text">
-        <a class="back" href="index.html">単元一覧</a>
-        <h1 id="unit-title">倫理　考査対策</h1>
-      </div>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="ダークモードに切り替え">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/>
-        </svg>
-      </button>
-    </header>
-    <p class="lead" id="unit-lead"></p>
-    <div class="control-panel" id="controls" hidden>
-      <button type="button" class="btn btn-primary" id="show-all">すべての回答を表示</button>
-      <button type="button" class="btn btn-primary" id="hide-all">すべての回答を非表示</button>
+  <div class="shell">
+    <div class="bar">
+      <a class="home" href="../index.html" aria-label="最初の画面へ">
+        <img src="../img/home.png" alt="" width="30" height="30">
+      </a>
     </div>
-    <div id="quiz"></div>
-  </main>
+
+    <main class="page">
+      <header class="hero inner">
+        <a class="back" href="index.html">↩︎単元一覧</a>
+        <h1 id="unit-title">倫理　考査対策</h1>
+      </header>
+
+      <div class="controls" id="controls" hidden>
+        <div class="controls-inner inner">
+          <button type="button" class="btn" id="show-all">すべての回答を表示</button>
+          <button type="button" class="btn" id="hide-all">すべての回答を非表示</button>
+        </div>
+      </div>
+      <div id="quiz"></div>
+    </main>
+  </div>
 
   <script src="questions.js"></script>
   <script>
     (function () {
-      const toggle = document.querySelector('[data-theme-toggle]');
-      const root = document.documentElement;
-      let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      const moon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/></svg>';
-      const sun = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-
-      function applyTheme() {
-        root.setAttribute('data-theme', dark ? 'dark' : 'light');
-        toggle.innerHTML = dark ? sun : moon;
-        toggle.setAttribute('aria-label', dark ? 'ライトモードに切り替え' : 'ダークモードに切り替え');
-      }
-
-      applyTheme();
-      toggle.addEventListener('click', function () {
-        dark = !dark;
-        applyTheme();
-      });
-
-      const keys = ['A', 'B'];
-      const unitId = new URLSearchParams(location.search).get('unit');
-      var unit = typeof UNITS !== 'undefined' ? UNITS[unitId] : null;
-      const titleEl = document.getElementById('unit-title');
-      const leadEl = document.getElementById('unit-lead');
-      const quizEl = document.getElementById('quiz');
+      const keys = ["A", "B"];
+      const unitId = new URLSearchParams(location.search).get("unit");
+      var unit = typeof UNITS !== "undefined" ? UNITS[unitId] : null;
+      const titleEl = document.getElementById("unit-title");
+      const quizEl = document.getElementById("quiz");
 
       if (!unit) {
-        titleEl.textContent = '単元が見つかりません';
-        leadEl.innerHTML = '<a class="back" href="index.html">単元一覧へ戻る</a>';
-        document.title = '単元が見つかりません';
+        titleEl.textContent = "単元が見つかりません";
+        document.title = "単元が見つかりません";
         return;
       }
 
       unit = shuffleChoices(unit);
 
       titleEl.textContent = unit.title;
-      leadEl.textContent = '空欄に入る語句を選んでください';
-      document.title = unit.title + '　|　倫理　考査対策';
-      document.getElementById('controls').hidden = false;
+      document.title = unit.title + "　|　倫理　考査対策";
+      document.getElementById("controls").hidden = false;
 
       const selected = unit.questions.map(function (q) {
         return q.blanks.map(function () { return null; });
@@ -410,10 +109,10 @@
 
       function escapeHtml(str) {
         return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
       }
 
       function renderStem(q, qi) {
@@ -425,7 +124,7 @@
           if (pick === null && !revealed) {
             return '<span class="blank">〔　　〕</span>';
           }
-          return '<span class="blank filled">〔 ' + escapeHtml(blank.choices[blank.correct]) + ' 〕</span>';
+          return '<span class="blank filled">〔 ' + escapeHtml(blank.choices[blank.correct]) + " 〕</span>";
         });
       }
 
@@ -436,62 +135,64 @@
           var ok = answered && pick === blank.correct;
           var showAnswer = answered || revealed;
           var label = q.blanks.length > 1
-            ? '<span class="blank-label">' + (bi + 1) + 'つ目</span>'
-            : '';
+            ? '<span class="blank-label">' + (bi + 1) + "つ目</span>"
+            : "";
           var buttons = blank.choices.map(function (choice, ci) {
-            var cls = 'choice';
+            var cls = "choice";
             if (showAnswer) {
-              if (ci === blank.correct) cls += ' correct';
-              else if (ci === pick) cls += ' incorrect';
-              else cls += ' idle';
+              if (ci === blank.correct) cls += " correct";
+              else if (ci === pick) cls += " incorrect";
+              else cls += " idle";
             }
             return (
               '<button type="button" class="' + cls + '"' +
               ' data-q="' + qi + '" data-b="' + bi + '" data-c="' + ci + '"' +
-              (showAnswer ? ' disabled' : '') +
-              '><span class="key">' + keys[ci] + '</span> ' + escapeHtml(choice) + '</button>'
+              (showAnswer ? " disabled" : "") +
+              '><span class="key">' + keys[ci] + "</span> " + escapeHtml(choice) + "</button>"
             );
-          }).join('');
-          var feedback = '';
+          }).join("");
+          var feedback = "";
           if (answered) {
             feedback = ok
-              ? '<p class="feedback ok">正解</p>'
-              : '<p class="feedback ng">不正解</p>';
+              ? '<p class="feedback ok">○正解</p>'
+              : '<p class="feedback ng">×不正解</p>';
           }
-          return '<div class="blank-block">' + label + '<div class="choices" role="group">' + buttons + '</div>' + feedback + '</div>';
-        }).join('');
+          return '<div class="blank-block">' + label + '<div class="choices" role="group">' + buttons + "</div>" + feedback + "</div>";
+        }).join("");
       }
 
       function render() {
         quizEl.innerHTML = unit.questions.map(function (q, qi) {
-          var n = String(qi + 1).padStart(2, '0');
+          var n = String(qi + 1).padStart(2, "0");
           return (
             '<article class="question">' +
-              '<p class="q-num">' + n + '</p>' +
-              '<p class="stem">' + renderStem(q, qi) + '</p>' +
-              renderChoices(q, qi) +
-            '</article>'
+              '<div class="inner question-inner">' +
+                '<p class="q-num">' + n + "</p>" +
+                '<p class="stem">' + renderStem(q, qi) + "</p>" +
+                renderChoices(q, qi) +
+              "</div>" +
+            "</article>"
           );
-        }).join('');
+        }).join("");
       }
 
-      quizEl.addEventListener('click', function (event) {
-        var btn = event.target.closest('.choice');
+      quizEl.addEventListener("click", function (event) {
+        var btn = event.target.closest(".choice");
         if (!btn || btn.disabled) return;
-        var qi = Number(btn.getAttribute('data-q'));
-        var bi = Number(btn.getAttribute('data-b'));
-        var ci = Number(btn.getAttribute('data-c'));
+        var qi = Number(btn.getAttribute("data-q"));
+        var bi = Number(btn.getAttribute("data-b"));
+        var ci = Number(btn.getAttribute("data-c"));
         if (selected[qi][bi] !== null || revealed) return;
         selected[qi][bi] = ci;
         render();
       });
 
-      document.getElementById('show-all').addEventListener('click', function () {
+      document.getElementById("show-all").addEventListener("click", function () {
         revealed = true;
         render();
       });
 
-      document.getElementById('hide-all').addEventListener('click', function () {
+      document.getElementById("hide-all").addEventListener("click", function () {
         revealed = false;
         selected.forEach(function (row) {
           for (var i = 0; i < row.length; i++) row[i] = null;

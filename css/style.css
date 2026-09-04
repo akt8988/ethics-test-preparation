@@ -159,7 +159,8 @@ button {
 }
 
 .hero {
-  padding: clamp(32px, 8vh, 88px) 0 40px;
+  padding-top: clamp(32px, 8vh, 88px);
+  padding-bottom: 40px;
 }
 
 .hero.inner {
@@ -176,7 +177,8 @@ button {
 
 @media (max-width: 767px) {
   .hero {
-    padding: clamp(21px, 5.3vh, 59px) 0 27px;
+    padding-top: clamp(21px, 5.3vh, 59px);
+    padding-bottom: 27px;
   }
 
   .hero.inner {

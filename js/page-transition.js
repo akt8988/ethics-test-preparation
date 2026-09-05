@@ -164,6 +164,11 @@
 
   window.addEventListener("load", () => {
     hasLoadedOnce = true;
+    if (root.classList.contains("is-intro")) {
+      root.classList.add("isLoaded", "is-transitioned");
+      root.classList.remove("is-delay");
+      return;
+    }
     applyEnteredState();
   });
 

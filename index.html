@@ -8,8 +8,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <script>
+    try {
+      if (!sessionStorage.getItem("ethics-intro-seen")) {
+        sessionStorage.setItem("ethics-intro-seen", "1");
+        document.documentElement.classList.add("is-intro");
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
+  <div class="intro" id="intro">
+    <button type="button" class="intro-skip" id="intro-skip">skip</button>
+    <canvas class="intro-clouds" id="intro-clouds" aria-hidden="true"></canvas>
+    <div class="intro-line" aria-hidden="true">
+      <span class="intro-glyph" id="intro-glyph"></span>
+      <span class="intro-caret" id="intro-caret"></span>
+    </div>
+  </div>
   <div class="shell">
     <div class="bar">
       <a class="home g-logo-reveal" href="./" aria-label="最初の画面へ" data-page-transition="off">
@@ -53,30 +70,9 @@
         </ul>
       </nav>
     </main>
-
-    <aside id="js-next-navigation" class="next-nav">
-      <div class="next-nav__wrap">
-        <div class="next-nav__text-wrap">
-          <span id="js-next-navigation__text" class="next-nav__text">Next</span>
-          <span id="js-next-navigation__name" class="next-nav__name">前期期末考査</span>
-        </div>
-        <div class="next-nav__icon-wrap g-logo-reveal">
-          <a
-            id="js-next-navigation__link"
-            class="next-nav__link"
-            href="zenki-kimatu/"
-            data-page-transition-mode="delayed"
-            data-page-transition-before-exit="550"
-            data-page-transition-after-exit="550"
-          >
-            <img class="next-nav__icon" src="img/home.png" alt="前期期末考査へ" width="36" height="36">
-          </a>
-        </div>
-      </div>
-    </aside>
   </div>
 
   <script src="js/page-transition.js"></script>
-  <script src="js/typing-trigger.js"></script>
+  <script src="js/intro.js"></script>
 </body>
 </html>

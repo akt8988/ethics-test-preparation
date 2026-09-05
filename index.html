@@ -6,47 +6,77 @@
   <title>倫理　考査対策</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="shell">
     <div class="bar">
-      <a class="home" href="./" aria-label="最初の画面へ">
+      <a class="home g-logo-reveal" href="./" aria-label="最初の画面へ" data-page-transition="off">
         <img src="img/home.png" alt="" width="30" height="30">
       </a>
     </div>
 
     <main class="page">
       <header class="hero hero-home inner">
-        <h1>倫理　考査対策</h1>
+        <h1 class="g-clip-reveal">倫理　考査対策</h1>
       </header>
 
       <nav aria-label="考査">
         <ul class="nav-list">
           <li>
-            <a class="nav-link inner" href="zenki-kimatu/">
-              <span class="nav-index">01</span>
-              <span class="nav-name">前期期末考査</span>
+            <a
+              class="nav-link inner"
+              href="zenki-kimatu/"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">01</span>
+              <span class="nav-name g-clip-reveal">前期期末考査</span>
             </a>
           </li>
           <li>
             <span class="nav-link inner is-disabled" aria-disabled="true">
-              <span class="nav-index">02</span>
-              <span class="nav-name">後期中間考査</span>
-              <span class="nav-status">準備中</span>
+              <span class="nav-index g-clip-reveal">02</span>
+              <span class="nav-name g-clip-reveal">後期中間考査</span>
+              <span class="nav-status g-clip-reveal">準備中</span>
             </span>
           </li>
           <li>
             <span class="nav-link inner is-disabled" aria-disabled="true">
-              <span class="nav-index">03</span>
-              <span class="nav-name">後期期末考査</span>
-              <span class="nav-status">準備中</span>
+              <span class="nav-index g-clip-reveal">03</span>
+              <span class="nav-name g-clip-reveal">後期期末考査</span>
+              <span class="nav-status g-clip-reveal">準備中</span>
             </span>
           </li>
         </ul>
       </nav>
     </main>
+
+    <aside id="js-next-navigation" class="next-nav">
+      <div class="next-nav__wrap">
+        <div class="next-nav__text-wrap">
+          <span id="js-next-navigation__text" class="next-nav__text">Next</span>
+          <span id="js-next-navigation__name" class="next-nav__name">前期期末考査</span>
+        </div>
+        <div class="next-nav__icon-wrap g-logo-reveal">
+          <a
+            id="js-next-navigation__link"
+            class="next-nav__link"
+            href="zenki-kimatu/"
+            data-page-transition-mode="delayed"
+            data-page-transition-before-exit="550"
+            data-page-transition-after-exit="550"
+          >
+            <img class="next-nav__icon" src="img/home.png" alt="前期期末考査へ" width="36" height="36">
+          </a>
+        </div>
+      </div>
+    </aside>
   </div>
+
+  <script src="js/page-transition.js"></script>
+  <script src="js/typing-trigger.js"></script>
 </body>
 </html>

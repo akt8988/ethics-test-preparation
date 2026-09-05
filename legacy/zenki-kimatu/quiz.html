@@ -6,21 +6,21 @@
   <title>倫理　考査対策</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <div class="shell">
     <div class="bar">
-      <a class="home g-logo-reveal" href="../index.html" aria-label="最初の画面へ" data-page-transition="off">
+      <a class="home" href="../index.html" aria-label="最初の画面へ">
         <img src="../img/home.png" alt="" width="30" height="30">
       </a>
     </div>
 
     <main class="page">
       <header class="hero inner">
-        <a class="back g-clip-reveal" href="index.html" data-page-transition-mode="standard">↩︎単元一覧</a>
-        <h1 id="unit-title" class="g-clip-reveal">倫理　考査対策</h1>
+        <a class="back" href="index.html">↩︎単元一覧</a>
+        <h1 id="unit-title">倫理　考査対策</h1>
       </header>
 
       <div class="controls" id="controls" hidden>
@@ -31,74 +31,22 @@
       </div>
       <div id="quiz"></div>
     </main>
-
-    <aside id="js-next-navigation" class="next-nav">
-      <div class="next-nav__wrap">
-        <div class="next-nav__text-wrap">
-          <span id="js-next-navigation__text" class="next-nav__text">Next</span>
-          <span id="js-next-navigation__name" class="next-nav__name">単元一覧</span>
-        </div>
-        <div class="next-nav__icon-wrap g-logo-reveal">
-          <a
-            id="js-next-navigation__link"
-            class="next-nav__link"
-            href="index.html"
-            data-page-transition-mode="delayed"
-            data-page-transition-before-exit="550"
-            data-page-transition-after-exit="550"
-          >
-            <img class="next-nav__icon" src="../img/home.png" alt="" width="36" height="36">
-          </a>
-        </div>
-      </div>
-    </aside>
   </div>
 
   <script src="questions.js"></script>
   <script>
     (function () {
       const keys = ["A", "B"];
-      const UNIT_ORDER = [
-        "hellenism",
-        "judaism-christianity",
-        "islam",
-        "buddhism",
-        "chinese-thought"
-      ];
       const unitId = new URLSearchParams(location.search).get("unit");
       var unit = typeof UNITS !== "undefined" ? UNITS[unitId] : null;
       const titleEl = document.getElementById("unit-title");
       const quizEl = document.getElementById("quiz");
 
-      function setupNextNavigation() {
-        const nextNameEl = document.getElementById("js-next-navigation__name");
-        const nextLinkEl = document.getElementById("js-next-navigation__link");
-        const nextIconEl = nextLinkEl && nextLinkEl.querySelector("img");
-        if (!nextNameEl || !nextLinkEl) return;
-
-        const idx = UNIT_ORDER.indexOf(unitId);
-        var nextHref = "index.html";
-        var nextName = "単元一覧";
-
-        if (idx >= 0 && idx < UNIT_ORDER.length - 1) {
-          const nextId = UNIT_ORDER[idx + 1];
-          nextHref = "quiz.html?unit=" + nextId;
-          nextName = UNITS[nextId].title;
-        }
-
-        nextNameEl.textContent = nextName;
-        nextLinkEl.href = nextHref;
-        if (nextIconEl) nextIconEl.alt = nextName + "へ";
-      }
-
       if (!unit) {
         titleEl.textContent = "単元が見つかりません";
         document.title = "単元が見つかりません";
-        document.getElementById("js-next-navigation").hidden = true;
         return;
       }
-
-      setupNextNavigation();
 
       unit = shuffleChoices(unit);
 
@@ -255,7 +203,5 @@
       render();
     })();
   </script>
-  <script src="../js/page-transition.js"></script>
-  <script src="../js/typing-trigger.js"></script>
 </body>
 </html>

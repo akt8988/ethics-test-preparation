@@ -6,59 +6,113 @@
   <title>前期期末考査　|　倫理　考査対策</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <div class="shell">
     <div class="bar">
-      <a class="home" href="../index.html" aria-label="最初の画面へ">
+      <a class="home g-logo-reveal" href="../index.html" aria-label="最初の画面へ" data-page-transition="off">
         <img src="../img/home.png" alt="" width="30" height="30">
       </a>
     </div>
 
     <main class="page">
       <header class="hero inner">
-        <a class="back" href="../index.html">↩︎考査一覧</a>
-        <p class="kicker">01</p>
-        <h1>前期期末考査</h1>
+        <a class="back g-clip-reveal" href="../index.html" data-page-transition-mode="standard">↩︎考査一覧</a>
+        <p class="kicker g-clip-reveal">01</p>
+        <h1 class="g-clip-reveal">前期期末考査</h1>
       </header>
 
       <nav aria-label="単元">
         <ul class="nav-list">
           <li>
-            <a class="nav-link inner" href="quiz.html?unit=hellenism">
-              <span class="nav-index">01</span>
-              <span class="nav-name">ヘレニズム・ローマの思想</span>
+            <a
+              class="nav-link inner"
+              href="quiz.html?unit=hellenism"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">01</span>
+              <span class="nav-name g-clip-reveal">ヘレニズム・ローマの思想</span>
             </a>
           </li>
           <li>
-            <a class="nav-link inner" href="quiz.html?unit=judaism-christianity">
-              <span class="nav-index">02</span>
-              <span class="nav-name">ユダヤ教・キリスト教</span>
+            <a
+              class="nav-link inner"
+              href="quiz.html?unit=judaism-christianity"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">02</span>
+              <span class="nav-name g-clip-reveal">ユダヤ教・キリスト教</span>
             </a>
           </li>
           <li>
-            <a class="nav-link inner" href="quiz.html?unit=islam">
-              <span class="nav-index">03</span>
-              <span class="nav-name">イスラーム</span>
+            <a
+              class="nav-link inner"
+              href="quiz.html?unit=islam"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">03</span>
+              <span class="nav-name g-clip-reveal">イスラーム</span>
             </a>
           </li>
           <li>
-            <a class="nav-link inner" href="quiz.html?unit=buddhism">
-              <span class="nav-index">04</span>
-              <span class="nav-name">仏教</span>
+            <a
+              class="nav-link inner"
+              href="quiz.html?unit=buddhism"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">04</span>
+              <span class="nav-name g-clip-reveal">仏教</span>
             </a>
           </li>
           <li>
-            <a class="nav-link inner" href="quiz.html?unit=chinese-thought">
-              <span class="nav-index">05</span>
-              <span class="nav-name">中国思想</span>
+            <a
+              class="nav-link inner"
+              href="quiz.html?unit=chinese-thought"
+              data-page-transition-mode="delayed"
+              data-page-transition-before-exit="550"
+              data-page-transition-after-exit="550"
+            >
+              <span class="nav-index g-clip-reveal">05</span>
+              <span class="nav-name g-clip-reveal">中国思想</span>
             </a>
           </li>
         </ul>
       </nav>
     </main>
+
+    <aside id="js-next-navigation" class="next-nav">
+      <div class="next-nav__wrap">
+        <div class="next-nav__text-wrap">
+          <span id="js-next-navigation__text" class="next-nav__text">Next</span>
+          <span id="js-next-navigation__name" class="next-nav__name">ヘレニズム・ローマの思想</span>
+        </div>
+        <div class="next-nav__icon-wrap g-logo-reveal">
+          <a
+            id="js-next-navigation__link"
+            class="next-nav__link"
+            href="quiz.html?unit=hellenism"
+            data-page-transition-mode="delayed"
+            data-page-transition-before-exit="550"
+            data-page-transition-after-exit="550"
+          >
+            <img class="next-nav__icon" src="../img/home.png" alt="ヘレニズム・ローマの思想へ" width="36" height="36">
+          </a>
+        </div>
+      </div>
+    </aside>
   </div>
+
+  <script src="../js/page-transition.js"></script>
+  <script src="../js/typing-trigger.js"></script>
 </body>
 </html>

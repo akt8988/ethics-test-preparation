@@ -324,13 +324,18 @@ h1 {
   text-decoration: none;
   background: var(--ink);
   color: var(--paper);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn:hover,
 .btn:focus-visible {
-  background: var(--paper);
-  color: var(--ink);
   outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
 }
 
 .question {

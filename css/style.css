@@ -154,6 +154,10 @@ button {
   padding-bottom: 64px;
 }
 
+.page:has(+ .next-nav) {
+  padding-bottom: calc(64px / 3);
+}
+
 .inner {
   width: 100%;
   max-width: 720px;
@@ -559,8 +563,8 @@ html.is-delay .shell {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: min(60vh, 480px);
-  padding: 64px var(--pad-x) 80px;
+  min-height: min(20vh, 160px);
+  padding: calc(64px / 3) var(--pad-x) calc(80px / 3);
   border-top: var(--rule) solid var(--ink);
 }
 
